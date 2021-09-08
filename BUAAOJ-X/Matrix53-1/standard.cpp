@@ -13,7 +13,7 @@ int maxNode(int now, int limit) {
   int ans = -INF;
   for (auto son : g[now]) {
     ans = max(ans, minNode(son, ans));
-    // if (ans >= limit) break;
+    if (ans >= limit) break;
   }
   score[now] = ans;
   return ans;
@@ -24,7 +24,7 @@ int minNode(int now, int limit) {
   int ans = INF;
   for (auto son : g[now]) {
     ans = min(ans, maxNode(son, ans));
-    // if (ans <= limit) break;
+    if (ans <= limit) break;
   }
   score[now] = ans;
   return ans;
