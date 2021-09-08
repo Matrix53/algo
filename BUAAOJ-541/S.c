@@ -48,7 +48,7 @@ int main() {
         }
         ans++;
       } else if (B[0] > B[n - 1]) {
-        int tmp;
+        ll tmp;
         for (int i = 0; i < n / 2; ++i) {
           tmp = B[i];
           B[i] = B[n - 1 - i];
