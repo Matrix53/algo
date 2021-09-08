@@ -10,6 +10,6 @@ for i in range(5):
         if len(i) == 1:
             leaf.append(randint(0, 10000))
     io.input_writeln(max_node)
-    io.input_writeln(tree.to_str(output=Edge.unweighted_edge, shuffle=True))
+    io.input_writeln(tree.to_str(output=Edge.unweighted_edge))
     io.input_write(leaf)
     io.output_gen('D:\\Workspace\\algo\\BUAAOJ-X\\Matrix53-1\\standard.exe')
