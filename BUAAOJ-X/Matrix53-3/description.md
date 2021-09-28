@@ -42,6 +42,6 @@
 
 ## 数据范围
 
-$3\leq n \leq 3000$
+$3\leq n \leq 2500$
 
 $1\leq a_i \leq 10^7$
