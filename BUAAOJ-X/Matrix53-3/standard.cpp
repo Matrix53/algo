@@ -2,32 +2,31 @@
 
 using namespace std;
 
-pair<int, int> a[2505], b[2505], c[2505];
-
-long long clac() { return 0; }
+int a[2505], b[2505], c[2505];
+int pa, pb, pc;
 
 int main() {
   long long ans = 0;
-  int n;
-  scanf("%d", &n);
-  for (int i = 0; i < n; ++i) {
-    scanf("%d", &a[i].first);
-    a[i].second = i;
-  }
-  sort(a, a + n);
-  for (int i = 2; i < n; ++i) {
-    int cnt = 0;
-    for (int j = 0; j < i; ++j) {
-      if (a[j].second < a[i].second) {
-        cnt++;
-        b[cnt].first = a[j].second;
-        b[cnt].second = a[j].first;
-      }
+  scanf("%d", &pa);
+  for (int i = 0; i < pa; ++i) scanf("%d", &a[i]);
+  for (int j = 1; j < pa - 1; ++j) {
+    pc = pb = 0;
+    for (int i = 0; i < j; ++i) {
+      if (a[i] <= a[j]) b[pb++] = a[i];
     }
-    if (cnt <= 1) continue;
-    sort(b, b + cnt);
-    // TODO: 计算三角形个数
-    ans += clac();
+    for (int k = j + 1; k < pa; ++k) {
+      if (a[j] <= a[k]) c[pc++] = a[k];
+    }
+    if (pb == 0 || pc == 0) continue;
+    sort(b, b + pb);
+    sort(c, c + pc);
+    int i = 0, k = 0;
+    while (i < pb && b[i] + a[j] <= c[k]) i++;
+    while (i < pb) {
+      while (k < pc - 1 && b[i] + a[j] > c[k + 1]) k++;
+      ans += k + 1;
+      i++;
+    }
   }
   printf("%lld", ans);
   return 0;
