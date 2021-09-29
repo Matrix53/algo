@@ -16,16 +16,16 @@ io.close()
 # big data
 for i in range(3):
     io = IO(str(i + 2) + '.in', str(i + 2) + '.out')
-    io.input_writeln(2500)
+    io.input_writeln(3500)
     seq = Sequence(lambda i, f: randint(1, 10000000))
-    io.input_writeln(seq.get(0, 2499))
+    io.input_writeln(seq.get(0, 3499))
     io.output_gen(code_path + 'standard.exe')
     io.close()
 
 # hack data
 io = IO('5.in', '5.out')
-io.input_writeln(2500)
+io.input_writeln(3500)
 seq = Sequence(lambda i, f: 9999999)
-io.input_writeln(seq.get(0, 2499))
+io.input_writeln(seq.get(0, 3499))
 io.output_gen(code_path + 'standard.exe')
 io.close()

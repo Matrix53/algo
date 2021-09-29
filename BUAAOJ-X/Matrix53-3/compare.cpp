@@ -2,7 +2,9 @@
 
 using namespace std;
 
-int a[2505];
+const int N = 3505;
+
+int a[N];
 
 int main() {
   long long ans = 0;

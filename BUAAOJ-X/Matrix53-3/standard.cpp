@@ -2,7 +2,9 @@
 
 using namespace std;
 
-int a[2505], b[2505], c[2505];
+const int N = 3505;
+
+int a[N], b[N], c[N];
 int pa, pb, pc;
 
 int main() {
