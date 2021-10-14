@@ -17,12 +17,12 @@ bool isLower(pll a, pll b) {
 int main() {
   int n;
   scanf("%d", &n);
-  for (int i = 0; i < n; ++i) scanf("%lld", &data[i].first);
-  for (int i = 0; i < n; ++i) scanf("%lld", &data[i].second);
-  sort(data, data + n, isLower);
-  ll ans = 1;
-  for (int i = 0; i < n; ++i)
-    ans = (ans * data[i].first + data[i].second) % mod;
+  for (int i = 0; i <= n; ++i) scanf("%lld", &data[i].first);
+  for (int i = 0; i <= n; ++i) scanf("%lld", &data[i].second);
+  sort(data, data + n + 1, isLower);
+  ll ans = 0;
+  for (int i = 0; i <= n; ++i)
+    ans = (ans * data[i].second + data[i].first) % mod;
   printf("%lld", ans);
   return 0;
 }
