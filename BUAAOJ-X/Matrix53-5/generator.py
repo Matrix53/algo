@@ -18,8 +18,8 @@ for i in range(5):
     io = IO(str(i + 1) + '.in', str(i + 1) + '.out')
     io.input_writeln(100000)
     seq = Sequence(lambda i, f: randint(1, 10000000))
-    io.input_writeln(seq.get(0, 99999))
-    io.input_writeln(seq.get(100000, 199999))
+    io.input_writeln(seq.get(0, 100000))
+    io.input_writeln(seq.get(100001, 200001))
     io.output_gen(code_path + 'standard.exe')
     io.close()
 
