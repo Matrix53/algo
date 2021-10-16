@@ -11,10 +11,12 @@ const int maxn = 1e5 + 5;
 pll data[maxn];
 
 bool isLower(pll a, pll b) {
-  return a.first * b.second + a.second < b.first * a.second + b.second;
+  return a.first * b.second + b.first > b.first * a.second + a.first;
 }
 
 int main() {
+  // freopen("D:\\Workspace\\algo\\BUAAOJ-X\\Matrix53-5\\data\\1.in", "r",
+  // stdin);
   int n;
   scanf("%d", &n);
   for (int i = 0; i <= n; ++i) scanf("%lld", &data[i].first);

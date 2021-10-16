@@ -27,6 +27,6 @@ int main() {
     }
     ans = max(tmp_ans, ans);
   } while (next_permutation(permutation, permutation + n + 1));
-  printf("%lld", ans);
+  printf("%lld", ans % 998244353);
   return 0;
 }
