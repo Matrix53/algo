@@ -49,7 +49,7 @@
 
 $1\leq n \leq 10^3$
 
-$1\leq k,w \leq 10^5$
+$1\leq m,w \leq 10^5$
 
 $1\leq v \leq 10^7$
 
