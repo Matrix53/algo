@@ -6,6 +6,7 @@ long long dp[maxn][maxn], w[maxn][maxn];
 int f[maxn], p[maxn], root[maxn][maxn];
 
 int main() {
+  freopen("D:/Workspace/algo/BUAAOJ-X/Matrix53-E4-C/data/1.in", "r", stdin);
   int n;
   scanf("%d", &n);
   for (int i = 1; i <= n; ++i) scanf("%lld", &f[i]);
@@ -13,7 +14,7 @@ int main() {
   for (int i = 1; i <= n; ++i) {
     root[i][i] = i;
     w[i][i] = f[i] + p[i - 1] + p[i];
-    dp[i][i] = w[i][i] + p[i - 1] + p[i];
+    dp[i][i] = w[i][i];
   }
   for (int len = 1; len < n; ++len) {
     for (int l = 1; l <= n - len; ++l) {
