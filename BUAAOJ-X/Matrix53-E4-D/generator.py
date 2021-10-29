@@ -1,6 +1,6 @@
 from cyaron import *
 
-code_path = 'D:/Workspace/algo/BUAAOJ-X/Matrix53-E4-A/'
+code_path = 'D:/Workspace/algo/BUAAOJ-X/Matrix53-E4-D/'
 
 # small data
 io = IO('1.in', '1.out')

@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
 const int maxn = 1e3 + 5;
 
 long long dp[maxn][maxn], w[maxn][maxn];
