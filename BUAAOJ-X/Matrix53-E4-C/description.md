@@ -12,7 +12,7 @@ Matrix53 想到正确的标号 s1,s2...sn 的频率分别为 f1,f2...fn。
 
 Matrix53 想到错误的标号的频率分别为 p0,p1...pn，设 Matrix53 想到的标号为 t，有：
 
-p0=P（t < s1），pn=P（t > sn），pi(0 < i < n)=P（si < t < si+1）。
+p0=P(t < s1)，pn=P(t > sn)，pi(0 < i < n)=P(si < t < si+1)，其中 P(X)表示事件发生的频率。
 
 Matrix53 上过算法课，他将这 n 个表情以标号为键构建了一颗二叉搜索树。
 
