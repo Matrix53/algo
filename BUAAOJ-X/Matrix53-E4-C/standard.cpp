@@ -6,7 +6,7 @@ long long dp[maxn][maxn], w[maxn][maxn];
 int f[maxn], p[maxn], root[maxn][maxn];
 
 int main() {
-  freopen("D:/Workspace/algo/BUAAOJ-X/Matrix53-E4-C/data/1.in", "r", stdin);
+  // freopen("D:/Workspace/algo/BUAAOJ-X/Matrix53-E4-C/data/1.in", "r", stdin);
   int n;
   scanf("%d", &n);
   for (int i = 1; i <= n; ++i) scanf("%lld", &f[i]);
