@@ -4,9 +4,8 @@ code_path = 'D:/Workspace/algo/BUAAOJ-X/Matrix53-C4-F/'
 
 # small data
 io = IO('1.in', '1.out')
-io.input_writeln(500)
-seq = Sequence(lambda i, f: randint(1, 1000))
-io.input_writeln(seq.get(1, 500))
+io.input_writeln(5)
+io.input_writeln(5, 5, 5, 7, 8)
 # Compare.program(code_path + 'standard.exe',
 #                 input=io,
 #                 std_program=code_path + 'compare.exe')
@@ -16,8 +15,9 @@ io.close()
 # big data
 io = IO('2.in', '2.out')
 io.input_writeln(500)
-seq = Sequence(lambda i, f: randint(1, 1000))
-io.input_writeln(seq.get(1, 500))
+seq1 = Sequence(lambda i, f: randint(101, 110))
+seq2 = Sequence(lambda i, f: 1000)
+io.input_writeln(seq1.get(1, 101), seq2.get(1, 399))
 io.output_gen(code_path + 'standard.exe')
 io.close()
 

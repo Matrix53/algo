@@ -6,6 +6,7 @@ const int MAX_SUM = 250005;
 bool dp[MAX_SUM];
 
 int main() {
+  // freopen("D:/Workspace/algo/BUAAOJ-X/Matrix53-C4-F/data/2.in", "r", stdin);
   int n, x, sum = 0;
   dp[0] = true;
   scanf("%d", &n);
