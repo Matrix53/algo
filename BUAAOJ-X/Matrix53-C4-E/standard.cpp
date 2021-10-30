@@ -1,18 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long long dp[100005];
+priority_queue<int> pq;
 
 int main() {
-  int n, m;
-  scanf("%d%d", &n, &m);
-  while (n--) {
-    int v, w;
-    scanf("%d%d", &v, &w);
-    for (int i = 0; i <= m - w; ++i) {
-      dp[i + w] = max(dp[i + w], dp[i] + v);
-    }
+  int n, x, y;
+  scanf("%d", &n);
+  for (int i = 0; i < n; ++i) {
+    scanf("%d", &x);
+    pq.emplace(x);
   }
-  printf("%lld", dp[m]);
+  while (pq.size() != 1) {
+    x = pq.top();
+    pq.pop();
+    y = pq.top();
+    pq.pop();
+    pq.emplace(x - y);
+  }
+  printf("%d", pq.top());
   return 0;
 }
