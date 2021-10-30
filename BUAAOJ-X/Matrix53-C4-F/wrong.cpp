@@ -4,6 +4,7 @@ using namespace std;
 priority_queue<int> pq;
 
 int main() {
+  // freopen("D:/Workspace/algo/BUAAOJ-X/Matrix53-C4-F/data/2.in", "r", stdin);
   int n, x, y;
   scanf("%d", &n);
   for (int i = 0; i < n; ++i) {
