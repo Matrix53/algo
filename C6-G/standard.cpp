@@ -1,18 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long long dp[100005];
-
 int main() {
-  int n, k;
-  scanf("%d%d", &n, &k);
-  while (n--) {
-    int v, w;
-    scanf("%d%d", &v, &w);
-    for (int i = k; i >= w; --i) {
-      dp[i] = max(dp[i], dp[i - w] + v);
-    }
-  }
-  printf("%lld", dp[k]);
+  double x_o, y_o, x_a, y_a, x_k, y_k, r;
+  int alpha;
+  scanf("%lf%lf%lf", &x_o, &y_o, &r);
+  scanf("%lf%lf%d", &x_a, &y_a, &alpha);
+  scanf("%lf%lf", &x_k, &y_k);
+
   return 0;
 }
