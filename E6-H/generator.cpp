@@ -21,17 +21,17 @@ Vector rotate(Vector a, double rad) {
 int main() {
   Point O, A, T1, T2;
   int alpha;
-  O.x = 0;
+  O.x = 100;
   O.y = 100;
-  A.x = 2000;
+  A.x = 2100;
   A.y = 100;
-  alpha = 47;
+  alpha = 10;
   A = A - O;
   for (int count = 0; count < 365; ++count) {
-    if (count == 156) {
+    if (count == 197) {
       T1 = rotate(A, ((alpha * 2 * count) % 360) * pi / 180);
       T2 = rotate(A, ((alpha * 2 * (count + 1)) % 360) * pi / 180);
-      T1 = (T2 - T1) * 0.7 + T1 + O;
+      T1 = (T2 - T1) * 0.7 + T1 + O + Point(0, 1e-4);
       printf("%.10f %.10f", T1.x, T1.y);
     }
   }

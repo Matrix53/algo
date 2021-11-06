@@ -42,7 +42,7 @@ int relation(Point p, Segment s) {
 }
 
 int main() {
-  // freopen("D:/Workspace/algo/E6-J/data/1.in", "r", stdin);
+  // freopen("D:/Workspace/algo/E6-H/data/4.in", "r", stdin);
   Point O, A, K, T1, T2;
   int alpha;
   scanf("%lf%lf", &O.x, &O.y);
