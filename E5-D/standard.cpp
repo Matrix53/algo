@@ -46,6 +46,7 @@ void dijkstra(int s) {
 }
 
 int main() {
+  // freopen("D:/Workspace/algo/E5-D/data/5.in", "r", stdin);
   int p, x, y;
   scanf("%d%d", &n, &m);
   scanf("%d%d%d", &p, &x, &y);
