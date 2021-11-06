@@ -115,28 +115,26 @@ int cross(Line v, Circle C, Point& pa, Point& pb) {
 }
 
 int main() {
-  freopen("D:/Workspace/algo/E6-J/data/1.in", "r", stdin);
   Circle O;
   Point A, K;
   int alpha;
   Point T1, T2, V;
-  scanf("%lf%lf%lf", &O.c.x, &O.c.y, &O.r);
-  scanf("%lf%lf%d", &A.x, &A.y, &alpha);
-  scanf("%lf%lf", &K.x, &K.y);
+  O.c.x = 0;
+  O.c.y = 0;
+  O.r = 1000;
+  A.x = 1000;
+  A.y = 0;
+  alpha = 89;
   cross(Line(A, A + rotate(O.c - A, -(90 - alpha) * pi / 180)), O, T1, T2);
   V = T2 - A + T1 - A;
   for (int count = 0; count < 365; ++count) {
     int res = relation(K, Segment(A, A + V));
-    // if (res == 1 || res == 2) {
-    //   printf("%d", count);
-    //   return 0;
-    // }
     if (count == 350) {
-      printf("%d", res);
+      T1 = V * 0.7 + A;
+      printf("%.10f %.10f", T1.x, T1.y);
     }
     A = A + V;
     V = rotate(V, 2 * alpha * pi / 180);
   }
-  printf("-1");
   return 0;
 }
