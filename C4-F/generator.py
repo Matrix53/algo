@@ -1,6 +1,6 @@
 from cyaron import *
 
-code_path = 'D:/Workspace/algo/BUAAOJ-X/Matrix53-C4-F/'
+code_path = 'D:/Workspace/algo/C4-F/'
 
 # small data
 io = IO('1.in', '1.out')
@@ -26,5 +26,14 @@ io = IO('3.in', '3.out')
 io.input_writeln(499)
 seq = Sequence(lambda i, f: 1000)
 io.input_writeln(seq.get(1, 499))
+io.output_gen(code_path + 'standard.exe')
+io.close()
+
+# emergency
+io = IO('4.in', '4.out')
+io.input_writeln(499)
+seq1 = Sequence(lambda i, f: randint(1, 1000))
+seq2 = Sequence(lambda i, f: 1000)
+io.input_writeln(seq1.get(1, 101), seq2.get(1, 398))
 io.output_gen(code_path + 'standard.exe')
 io.close()
