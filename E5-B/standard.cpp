@@ -33,7 +33,7 @@ int main() {
   while (p--) {
     int u, v;
     scanf("%d%d", &u, &v);
-    printf("%lld\n", dp[u][v]);
+    printf("%lld\n", dp[u][v] == LONG_LONG_MAX ? -1 : dp[u][v]);
   }
   return 0;
 }
