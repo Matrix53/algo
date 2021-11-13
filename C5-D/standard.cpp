@@ -68,7 +68,7 @@ ll dinic(int s, int t) {
 }
 
 int main() {
-  // freopen("D:\\Workspace\\algo\\C5-D\\data\\4.in", "r", stdin);
+  // freopen("D:\\Workspace\\algo\\C5-D\\data\\1.in", "r", stdin);
   int n, m, p, t;
   scanf("%d%d%d%d", &n, &m, &p, &t);
   for (int i = 0; i < m; ++i) {

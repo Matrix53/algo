@@ -33,4 +33,4 @@ $3\leq p ＜ n \leq 100$
 
 $1\leq m \leq 5000$
 
-$0\leq c \leq 10^7$
+$0\leq c \leq 2^{31}-1$
