@@ -2,3 +2,5 @@
 .vscode
 */*.exe
 */data
+test.cpp
+test.exe
