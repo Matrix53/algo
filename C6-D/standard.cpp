@@ -3,7 +3,6 @@ using namespace std;
 
 const double pi = acos(-1.0);
 const double eps = 1e-8;
-const int maxp = 1010;
 
 int sgn(double x) {
   if (fabs(x) < eps) return 0;
@@ -61,12 +60,6 @@ struct Line {
   }
 };
 
-struct Polygon {
-  int n;
-  Point p[maxp];
-  Line v[maxp];
-};
-
 int convexHull(Point *p, int n, Point *ch) {
   sort(p, p + n);
   n = unique(p, p + n) - p;
@@ -108,8 +101,8 @@ Point p[100005], ch[100005];
 int main() {
   int n;
   scanf("%d", &n);
-  for (int i = 0; i < n; ++i) scanf("%lf%lf", p[i].x, p[i].y);
+  for (int i = 0; i < n; ++i) scanf("%lf%lf", &p[i].x, &p[i].y);
   int count = convexHull(p, n, ch);
-  printf("%lf", longDis(ch, count));
+  printf("%.6f", longDis(ch, count));
   return 0;
 }
