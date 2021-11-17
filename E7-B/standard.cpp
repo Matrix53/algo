@@ -1,3 +1,4 @@
+// Author: Matrix53
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -23,7 +24,6 @@ void kmp(char *p, char *s, int plen, int slen) {
     while (j && s[i] != p[j]) j = fail[j];
     if (s[i] == p[j]) ++j;
     if (j == plen) {
-      //该匹配在s中的起点为i+1-plen，末尾为i
       printf("%d ", i + 1 - plen);
     }
   }
