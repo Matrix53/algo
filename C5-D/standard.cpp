@@ -1,87 +1,50 @@
-// Author: Matrix53
 #include <bits/stdc++.h>
+
 using namespace std;
-typedef long long ll;
 
-const int N = 1e4 + 5, M = 2e5 + 5;
-const ll inf = LLONG_MAX;
+const int N = 1005;
+const int M = 1000005;
 
-int tot = 1, lnk[N], ter[M], nxt[M], dep[N], cur[N];
-ll val[M];
+struct Road {
+  int u, v;
+  double val;
+  inline bool operator<(const Road &a) const { return val < a.val; }
+} A[M];
 
-void add(int u, int v, ll w) {
-  ter[++tot] = v;
-  nxt[tot] = lnk[u];
-  lnk[u] = tot;
-  val[tot] = w;
-}
+int n, m, fa[N];
+int find(int x) { return fa[x] == x ? x : fa[x] = find(fa[x]); }
 
-void addedge(int u, int v, ll w) {
-  add(u, v, w);
-  add(v, u, 0);
-}
-
-int bfs(int s, int t) {
-  memset(dep, 0, sizeof(dep));
-  memcpy(cur, lnk, sizeof(lnk));
-  queue<int> q;
-  q.push(s);
-  dep[s] = 1;
-  while (!q.empty()) {
-    int u = q.front();
-    q.pop();
-    for (int i = lnk[u]; i; i = nxt[i]) {
-      int v = ter[i];
-      if (val[i] && !dep[v]) {
-        q.push(v);
-        dep[v] = dep[u] + 1;
-      }
-    }
+double Kruskal() {
+  sort(A + 1, A + 1 + m);
+  for (int i = 1; i <= n; ++i) fa[i] = i;
+  double res = 0;
+  for (int i = 1; i <= m; ++i) {
+    int u = find(A[i].u);
+    int v = find(A[i].v);
+    if (u == v) continue;
+    fa[u] = v;
+    res += A[i].val;
   }
-  return dep[t];
+  return res;
 }
 
-ll dfs(int u, int t, ll flow) {
-  if (u == t) return flow;
-  ll ans = 0;
-  for (int &i = cur[u]; i && ans < flow; i = nxt[i]) {
-    int v = ter[i];
-    if (val[i] && dep[v] == dep[u] + 1) {
-      ll x = dfs(v, t, min(val[i], flow - ans));
-      if (x) {
-        val[i] -= x;
-        val[i ^ 1] += x;
-        ans += x;
-      }
-    }
-  }
-  if (ans < flow) dep[u] = -1;
-  return ans;
-}
-
-ll dinic(int s, int t) {
-  ll ans = 0;
-  while (bfs(s, t)) {
-    ll x;
-    while ((x = dfs(s, t, inf))) ans += x;
-  }
-  return ans;
-}
+pair<double, double> p[1005];
 
 int main() {
-  // freopen("D:\\Workspace\\algo\\C5-D\\data\\1.in", "r", stdin);
-  int n, m, p, t;
-  scanf("%d%d%d%d", &n, &m, &p, &t);
-  for (int i = 0; i < m; ++i) {
-    int u, v, c;
-    scanf("%d%d%d", &u, &v, &c);
-    addedge(u, v, c);
+  // freopen("D:\\Workspace\\algo\\C5-D\\data\\in2.txt", "r", stdin);
+  scanf("%d", &n);
+  m = n * (n - 1) / 2;
+  for (int i = 1; i <= n; ++i) scanf("%lf%lf", &p[i].first, &p[i].second);
+  int cnt = 1;
+  for (int i = 1; i <= n - 1; ++i) {
+    for (int j = i + 1; j <= n; ++j) {
+      A[cnt].u = i;
+      A[cnt].v = j;
+      A[cnt].val =
+          hypot(fabs(p[i].first - p[j].first), fabs(p[i].second - p[j].second));
+      cnt++;
+    }
   }
-  for (int i = 0; i < p; ++i) {
-    int q;
-    scanf("%d", &q);
-    addedge(n + 1, q, inf);
-  }
-  printf("%lld", dinic(n + 1, t));
+  printf("%.3f", Kruskal());
   return 0;
 }
