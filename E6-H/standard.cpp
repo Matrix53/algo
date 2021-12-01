@@ -1,65 +1,55 @@
 // Author: Matrix53
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+const int maxn = 2e3 + 5;
 
-const double pi = acos(-1.0);
-const double eps = 1e-6;
+ll dp[maxn][maxn], w[maxn][maxn];
+int f[maxn], p[maxn], root[maxn][maxn];
 
-int sgn(double x) {
-  if (fabs(x) < eps) return 0;
-  return x > 0 ? 1 : -1;
-}
-
-struct Point {
-  double x, y;
-  Point() : x(0), y(0) {}
-  Point(double a, double b) : x(a), y(b) {}
-  Point operator-(Point a) { return Point(x - a.x, y - a.y); }
-};
-
-typedef Point Vector;
-double dot(Vector a, Vector b) { return a.x * b.x + a.y * b.y; }
-double det(Vector a, Vector b) { return a.x * b.y - a.y * b.x; }
-//向量A逆时针旋转rad弧度
-Vector rotate(Vector a, double rad) {
-  return Vector(a.x * cos(rad) - a.y * sin(rad),
-                a.x * sin(rad) + a.y * cos(rad));
-}
-
-struct Line {
-  Point p1, p2;
-  Line() {}
-  Line(Point a, Point b) : p1(a), p2(b) {}
-};
-
-typedef Line Segment;
-//点和线段的关系：0为在线段延长线上，1为线段端点，2为在线段上，3为左侧，4为右侧
-int relation(Point p, Segment s) {
-  int sign = sgn(det(s.p2 - s.p1, p - s.p1));
-  if (sign) return sign > 0 ? 3 : 4;
-  sign = sgn(dot(s.p2 - p, s.p1 - p));
-  if (sign) return sign > 0 ? 0 : 2;
-  return 1;
+ll dfs(int l, int r) {
+  ll res = LONG_LONG_MAX;
+  if (l + 1 == r) {
+    int k = l + r - root[l][r];
+    res = dp[l][k - 1] + dp[k + 1][r] + w[l][r];
+  } else {
+    if (2 <= root[l][r] - 1 - l + 1)
+      res = min(res, dfs(l, root[l][r] - 1) + dp[root[l][r] + 1][r] + w[l][r]);
+    if (2 <= r - root[l][r] - 1 + 1)
+      res = min(res, dfs(root[l][r] + 1, r) + dp[l][root[l][r] - 1] + w[l][r]);
+    for (int i = l; i <= r; ++i) {
+      if (i != root[l][r]) {
+        res = min(res, dp[l][i - 1] + dp[i + 1][r] + w[l][r]);
+      }
+    }
+  }
+  return res;
 }
 
 int main() {
-  // freopen("D:/Workspace/algo/E6-H/data/4.in", "r", stdin);
-  Point O, A, K, T1, T2;
-  int alpha;
-  scanf("%lf%lf", &O.x, &O.y);
-  scanf("%lf%lf%d", &A.x, &A.y, &alpha);
-  scanf("%lf%lf", &K.x, &K.y);
-  K = K - O;
-  A = A - O;
-  for (int count = 0; count < 365; ++count) {
-    T1 = rotate(A, ((alpha * 2 * count) % 360) * pi / 180);
-    T2 = rotate(A, ((alpha * 2 * (count + 1)) % 360) * pi / 180);
-    int res = relation(K, Segment(T1, T2));
-    if (res == 1 || res == 2) {
-      printf("%d", count);
-      return 0;
+  int n;
+  scanf("%d", &n);
+  for (int i = 1; i <= n; ++i) scanf("%lld", &f[i]);
+  for (int i = 0; i <= n; ++i) scanf("%lld", &p[i]);
+  for (int i = 1; i <= n + 1; ++i) {
+    root[i][i - 1] = i;
+    dp[i][i - 1] = p[i - 1];
+    w[i][i - 1] = p[i - 1];
+  }
+  for (int len = 1; len <= n; ++len) {
+    for (int l = 1; l <= n - len + 1; ++l) {
+      int r = l + len - 1;
+      dp[l][r] = LONG_LONG_MAX;
+      w[l][r] = w[l][r - 1] + f[r] + p[r];
+      for (int mid = root[l][r - 1]; mid <= root[l + 1][r]; ++mid) {
+        ll sum = dp[l][mid - 1] + dp[mid + 1][r] + w[l][r];
+        if (dp[l][r] > sum) {
+          dp[l][r] = sum;
+          root[l][r] = mid;
+        }
+      }
     }
   }
-  printf("-1");
+  printf("%lld", dfs(1, n));
   return 0;
 }
