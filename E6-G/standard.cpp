@@ -1,10 +1,30 @@
 // Author: Matrix53
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 const int maxn = 2e3 + 5;
 
-long long dp[maxn][maxn], w[maxn][maxn];
+ll dp[maxn][maxn], w[maxn][maxn];
 int f[maxn], p[maxn], root[maxn][maxn];
+
+ll dfs(int l, int r) {
+  ll res = LONG_LONG_MAX;
+  if (l + 1 == r) {
+    int k = l + r - root[l][r];
+    res = dp[l][k - 1] + dp[k + 1][r] + w[l][r];
+  } else {
+    if (2 <= root[l][r] - 1 - l + 1)
+      res = min(res, dfs(l, root[l][r] - 1) + dp[root[l][r] + 1][r] + w[l][r]);
+    if (2 <= r - root[l][r] - 1 + 1)
+      res = min(res, dfs(root[l][r] + 1, r) + dp[l][root[l][r] - 1] + w[l][r]);
+    for (int i = l; i <= r; ++i) {
+      if (i != root[l][r]) {
+        res = min(res, dp[l][i - 1] + dp[i + 1][r] + w[l][r]);
+      }
+    }
+  }
+  return res;
+}
 
 int main() {
   int n;
@@ -22,7 +42,7 @@ int main() {
       dp[l][r] = LONG_LONG_MAX;
       w[l][r] = w[l][r - 1] + f[r] + p[r];
       for (int mid = root[l][r - 1]; mid <= root[l + 1][r]; ++mid) {
-        long long sum = dp[l][mid - 1] + dp[mid + 1][r] + w[l][r];
+        ll sum = dp[l][mid - 1] + dp[mid + 1][r] + w[l][r];
         if (dp[l][r] > sum) {
           dp[l][r] = sum;
           root[l][r] = mid;
@@ -30,25 +50,6 @@ int main() {
       }
     }
   }
-  long long ans = LONG_LONG_MAX;
-  for (int i = 1; i <= n; ++i) {
-    if (i != root[1][n]) {
-      ans = min(ans, dp[1][i - 1] + dp[i + 1][n] + w[1][n]);
-    }
-  }
-  for (int i = 1; i < root[1][n]; ++i) {
-    if (i != root[1][root[1][n] - 1]) {
-      ans =
-          min(ans, dp[1][i - 1] + dp[i + 1][root[1][n] - 1] +
-                       w[1][root[1][n] - 1] + dp[root[1][n] + 1][n] + w[1][n]);
-    }
-  }
-  for (int i = root[1][n] + 1; i <= n; ++i) {
-    if (i != root[root[1][n] + 1][n]) {
-      ans = min(ans, dp[1][root[1][n] - 1] + dp[root[1][n] + 1][i - 1] +
-                         dp[i + 1][n] + w[root[1][n] + 1][n] + w[1][n]);
-    }
-  }
-  printf("%lld", ans);
+  printf("%lld", dfs(1, n));
   return 0;
 }

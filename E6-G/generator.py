@@ -26,7 +26,7 @@ io.close()
 # hack data
 io = IO('3.in', '3.out')
 io.input_writeln(2000)
-seq = Sequence(lambda i, f: 100000000)
+seq = Sequence(lambda i, f: randint(99999000, 100000000))
 io.input_writeln(seq.get(1, 2000))
 io.input_writeln(seq.get(2001, 4001))
 io.output_gen(code_path + 'standard.exe')

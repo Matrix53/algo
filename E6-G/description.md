@@ -46,4 +46,4 @@ $1$ 号结点做树根
 
 $2\leq n \leq 2 \times 10^3$
 
-$1\leq f\_i,p\_i \leq 10^7$
+$1\leq f\_i,p\_i \leq 10^8$
