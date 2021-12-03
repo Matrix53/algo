@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int a[10005];
+int a[100005];
 
 int main() {
   ios::sync_with_stdio(false);
