@@ -16,8 +16,6 @@ Vector3 det(Vector3 a, Vector3 b) {
 }
 
 int main() {
-  // freopen("D:\\Workspace\\algo\\E7-A\\data\\4.in", "r", stdin);
-  // freopen("D:\\Workspace\\algo\\E7-A\\data\\4.out", "w", stdout);
   Point3 a, b, c;
   scanf("%lf%lf%lf%lf%lf%lf%lf%lf%lf", &a.x, &a.y, &a.z, &b.x, &b.y, &b.z, &c.x,
         &c.y, &c.z);
