@@ -19,6 +19,6 @@ int main() {
   Point3 a, b, c;
   scanf("%lf%lf%lf%lf%lf%lf%lf%lf%lf", &a.x, &a.y, &a.z, &b.x, &b.y, &b.z, &c.x,
         &c.y, &c.z);
-  printf("%f", fabs(dot(det(a, b), c)));
+  printf("%.1f", fabs(dot(det(a, b), c)));
   return 0;
 }
