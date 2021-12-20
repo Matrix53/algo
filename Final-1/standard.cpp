@@ -72,7 +72,8 @@ bool isLegal(int front) {
 }
 
 int main() {
-  scanf("%d%s", &length, num);
+  scanf("%s", num);
+  length = strlen(num);
   int l = length >> 1, r = l + 1;
   while (l > 1 && num[l] == '0') l--;
   while (r < length - 1 && num[r] == '0') r++;

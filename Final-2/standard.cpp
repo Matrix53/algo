@@ -14,10 +14,10 @@ int main() {
   int cntA, cntB;
   scanf("%lld%d%d", &n, &cntA, &cntB);
   scanf("%lld%lld", &x, &m);
-  for (int i = 0; i < cntA; ++i) scanf("%lld", &a[i].second);
   for (int i = 0; i < cntA; ++i) scanf("%lld", &a[i].first);
-  for (int i = cntB - 1; i >= 0; --i) scanf("%lld", &b[i].second);
+  for (int i = 0; i < cntA; ++i) scanf("%lld", &a[i].second);
   for (int i = cntB - 1; i >= 0; --i) scanf("%lld", &b[i].first);
+  for (int i = cntB - 1; i >= 0; --i) scanf("%lld", &b[i].second);
 
   // preprocess
   a[cntA] = make_pair(0, x);
