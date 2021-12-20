@@ -6,7 +6,7 @@ using namespace std;
 #define MAXSIZE 1010
 #define DLEN 4
 struct BigNum {
-  int a[500];
+  int a[25000];
   int len;
   BigNum();
   BigNum(const char *, int);
@@ -60,11 +60,27 @@ void BigNum::print() {
 }
 
 char num[1000005];
+int length;
+
+BigNum getAns(int front) {
+  BigNum a = BigNum(num, front);
+  BigNum b = BigNum(num + front, length - front);
+  return a + b;
+}
+bool isLegal(int front) {
+  return front >= 1 && front <= length - 1 && num[front] != '0';
+}
 
 int main() {
-  int length;
   scanf("%d%s", &length, num);
   int l = length >> 1, r = l + 1;
-
+  while (l > 1 && num[l] == '0') l--;
+  while (r < length - 1 && num[r] == '0') r++;
+  BigNum ans = isLegal(l) ? getAns(l) : getAns(r);
+  if (isLegal(l) && ans > getAns(l)) ans = getAns(l);
+  if (isLegal(r) && ans > getAns(r)) ans = getAns(r);
+  if (isLegal(l - 1) && ans > getAns(l - 1)) ans = getAns(l - 1);
+  if (isLegal(r + 1) && ans > getAns(r + 1)) ans = getAns(r + 1);
+  ans.print();
   return 0;
 }
