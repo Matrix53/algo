@@ -2,32 +2,36 @@ from cyaron import *
 
 code_path = 'D:/Workspace/algo/Final-1/'
 
-# small data
+# odd number
 io = IO('1.in', '1.out')
-io.input_writeln(500)
-seq = Sequence(lambda i, f: randint(1, 10000))
-io.input_writeln(seq.get(1, 500))
-io.input_writeln(seq.get(501, 1001))
-# Compare.program(code_path + 'standard.exe',
-#                 input=io,
-#                 std_program=code_path + 'compare.exe')
+s = String.random(40000, charset="0123456789")
+s += '0' * 101
+s += String.random(40000, charset="0123456789")
+io.input_writeln(s)
 io.output_gen(code_path + 'standard.exe')
 io.close()
 
-# big data
+# odd number
 io = IO('2.in', '2.out')
-io.input_writeln(1000)
-seq = Sequence(lambda i, f: randint(1, 100000000))
-io.input_writeln(seq.get(1, 1000))
-io.input_writeln(seq.get(1001, 2001))
+s = String.random(45000, charset="0123456789")
+s += String.random(40001, charset="0123456789")
+io.input_writeln(s)
 io.output_gen(code_path + 'standard.exe')
 io.close()
 
-# hack data
+# even number
 io = IO('3.in', '3.out')
-io.input_writeln(2000)
-seq = Sequence(lambda i, f: randint(99999000, 100000000))
-io.input_writeln(seq.get(1, 2000))
-io.input_writeln(seq.get(2001, 4001))
+s = String.random(44000, charset="0123456789")
+s += '0' * 1000
+s += String.random(44000, charset="0123456789")
+io.input_writeln(s)
+io.output_gen(code_path + 'standard.exe')
+io.close()
+
+# even number
+io = IO('4.in', '4.out')
+s = String.random(44005, charset="0123456789")
+s += String.random(44005, charset="0123456789")
+io.input_writeln(s)
 io.output_gen(code_path + 'standard.exe')
 io.close()

@@ -59,12 +59,13 @@ void BigNum::print() {
   for (int i = len - 2; i >= 0; --i) printf("%04d", a[i]);
 }
 
-char num[1000005];
+char num[100005];
 int length;
+BigNum ans, a, b;
 
 BigNum getAns(int front) {
-  BigNum a = BigNum(num, front);
-  BigNum b = BigNum(num + front, length - front);
+  a = BigNum(num, front);
+  b = BigNum(num + front, length - front);
   return a + b;
 }
 bool isLegal(int front) {
@@ -77,7 +78,7 @@ int main() {
   int l = length >> 1, r = l + 1;
   while (l > 1 && num[l] == '0') l--;
   while (r < length - 1 && num[r] == '0') r++;
-  BigNum ans = isLegal(l) ? getAns(l) : getAns(r);
+  ans = isLegal(l) ? getAns(l) : getAns(r);
   if (isLegal(l) && ans > getAns(l)) ans = getAns(l);
   if (isLegal(r) && ans > getAns(r)) ans = getAns(r);
   if (isLegal(l - 1) && ans > getAns(l - 1)) ans = getAns(l - 1);
