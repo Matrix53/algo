@@ -2,32 +2,47 @@ from cyaron import *
 
 code_path = 'D:/Workspace/algo/Final-3/'
 
-# small data
+# big data
 io = IO('1.in', '1.out')
-io.input_writeln(500)
-seq = Sequence(lambda i, f: randint(1, 10000))
-io.input_writeln(seq.get(1, 500))
-io.input_writeln(seq.get(501, 1001))
-# Compare.program(code_path + 'standard.exe',
-#                 input=io,
-#                 std_program=code_path + 'compare.exe')
+io.input_writeln(200, 200)
+seq = Sequence(lambda i, f: randint(0, 20000))
+for i in range(200):
+    io.input_writeln(seq.get(1 + 200 * i, 201 + 200 * i))
 io.output_gen(code_path + 'standard.exe')
 io.close()
 
 # big data
 io = IO('2.in', '2.out')
-io.input_writeln(1000)
-seq = Sequence(lambda i, f: randint(1, 100000000))
-io.input_writeln(seq.get(1, 1000))
-io.input_writeln(seq.get(1001, 2001))
+io.input_writeln(200, 200)
+seq = Sequence(lambda i, f: randint(0, 20000))
+for i in range(200):
+    io.input_writeln(seq.get(1 + 200 * i, 201 + 200 * i))
 io.output_gen(code_path + 'standard.exe')
 io.close()
 
-# hack data
+# big data
 io = IO('3.in', '3.out')
-io.input_writeln(2000)
-seq = Sequence(lambda i, f: randint(99999000, 100000000))
-io.input_writeln(seq.get(1, 2000))
-io.input_writeln(seq.get(2001, 4001))
+io.input_writeln(200, 200)
+seq = Sequence(lambda i, f: randint(0, 20000))
+for i in range(200):
+    io.input_writeln(seq.get(1 + 200 * i, 201 + 200 * i))
+io.output_gen(code_path + 'standard.exe')
+io.close()
+
+# big data
+io = IO('4.in', '4.out')
+io.input_writeln(200, 200)
+seq = Sequence(lambda i, f: randint(0, 20000))
+for i in range(200):
+    io.input_writeln(seq.get(1 + 200 * i, 201 + 200 * i))
+io.output_gen(code_path + 'standard.exe')
+io.close()
+
+# big data
+io = IO('5.in', '5.out')
+io.input_writeln(200, 200)
+seq = Sequence(lambda i, f: randint(0, 20000))
+for i in range(200):
+    io.input_writeln(seq.get(1 + 200 * i, 201 + 200 * i))
 io.output_gen(code_path + 'standard.exe')
 io.close()
