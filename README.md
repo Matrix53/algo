@@ -28,4 +28,4 @@
 
 欢迎使用[北航 OJ 平台](https://accoding.buaa.edu.cn/index)
 
-欢迎参观[我的个人博客](https://blog.matrix53.top)
+欢迎参观[我的个人博客](https://matrix53.github.io)
